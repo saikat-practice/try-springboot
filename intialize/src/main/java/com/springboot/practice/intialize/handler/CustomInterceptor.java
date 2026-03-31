@@ -13,10 +13,10 @@ public class CustomInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		System.out.println("Intercepting "+request.getRequestURI());
+		System.out.println("Intercepting header "+request.getHeader("Intercepting-Code"));
 		
-		if("/api/greet/intercepting-code".equals(request.getRequestURI()))
-			return true	;
+		if("secret_code".equals(request.getHeader("Intercepting-Code"))) 
+			return true;
 		
 		return false;
 	}
