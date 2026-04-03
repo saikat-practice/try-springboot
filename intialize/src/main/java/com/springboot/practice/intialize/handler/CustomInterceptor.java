@@ -17,6 +17,10 @@ public class CustomInterceptor implements HandlerInterceptor{
 		
 		if("secret_code".equals(request.getHeader("Intercepting-Code"))) 
 			return true;
+		else
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//			response.setContentType("application/json"); 
+			response.getWriter().write("Invalid intercepting code");
 		
 		return false;
 	}
