@@ -12,9 +12,13 @@ public class InterceptorConfig implements WebMvcConfigurer{
 	@Autowired
     private CustomInterceptor greetIntrceptor;
 	
+	public InterceptorConfig() {
+		//Constructor injection can be done here, but as of now no parameter to pass
+	}
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// TODO Auto-generated method stub
-		registry.addInterceptor(greetIntrceptor).addPathPatterns("/api/greet/*");
+		registry.addInterceptor(greetIntrceptor).addPathPatterns("/api/greet");
 	}
 }

@@ -15,7 +15,7 @@ public class DisplayController {
 	@Value("${environment}")
     private String env;
 	
-	@GetMapping("/greet/*")
+	@GetMapping("/greet")
     public String getWish() {
 		
 		return "Hello "+name+" ."+"We are in "+env+" environment";
