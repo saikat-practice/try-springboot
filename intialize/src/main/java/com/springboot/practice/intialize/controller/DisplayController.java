@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.practice.intialize.service.UserService;
+
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
@@ -14,7 +16,9 @@ import jakarta.annotation.PreDestroy;
 @RequestMapping("/api")
 public class DisplayController {
 	
-//	@Autowired
+	@Autowired
+	private UserService user;
+	
 	private ConfigurableApplicationContext context; 
     
     public DisplayController(ConfigurableApplicationContext context) {  // Inject via constructor
