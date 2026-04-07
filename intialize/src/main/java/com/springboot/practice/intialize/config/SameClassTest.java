@@ -1,10 +1,8 @@
 package com.springboot.practice.intialize.config;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
-@Qualifier("ConfigTest")
+@Component("ConfigTest")
 public class SameClassTest {
 
 	//org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class 
