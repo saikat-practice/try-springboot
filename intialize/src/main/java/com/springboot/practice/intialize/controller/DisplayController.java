@@ -1,19 +1,38 @@
 package com.springboot.practice.intialize.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 @RestController
 @RequestMapping("/api")
 public class DisplayController {
+	
+//	@Autowired
+	private ConfigurableApplicationContext context; 
+    
+    public DisplayController(ConfigurableApplicationContext context) {  // Inject via constructor
+        this.context = context;
+    }
 	
 	@Value("${display.name}")
     private String name;
 	
 	@Value("${environment}")
     private String env;
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("Post Bean initialization");
+	}
+	
+	
 	
 	@GetMapping("/greet")
     public String getWish() {
@@ -26,4 +45,28 @@ public class DisplayController {
 		
 		return "Hello User";
 	}
+	
+	
+	
+	// trying to reach predestroy and serve the api request simultaneously
+	@GetMapping("/shutdown")
+	public String shutdown() {
+		// Start shutdown in a background thread
+	    new Thread(() -> {
+	        try {
+	            Thread.sleep(100);  // Give response time to send back
+	            context.close();  // Triggers @PreDestroy
+	        } catch (InterruptedException e) {
+	            Thread.currentThread().interrupt();
+	        }
+	    }).start();
+	    
+	    return "Shutting down...";  // Returns immediately
+	}
+	
+	@PreDestroy
+	public void destroy() {
+		System.out.println("Before bean destruction");
+	}
+	
 }

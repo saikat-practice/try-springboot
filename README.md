@@ -12,6 +12,9 @@ This project is a practice implementation of Spring Boot, a powerful framework u
 - **RESTful Web Services**: The application will expose REST APIs to interact with clients.
 
 ## Setup Instructions
+0. **Start Git**:  
+   `git config --global user.name "OwnerName"`
+   `git config --global user.email "ownerid@mail.com"` 
 1. **Clone the repository**:  
    `git clone https://github.com/saikat-practice/try-springboot.git`
 
