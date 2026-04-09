@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Scope("prototype")
 public class PrototypeTask {
-	private int instanceCount = 0;
+	private static int instanceCount = 0;
 	private int task;
 	
 	public PrototypeTask() {
