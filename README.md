@@ -8,7 +8,6 @@ This project is a practice implementation of Spring Boot, a powerful framework u
 - **Spring Boot**: The main framework used for building the application.
 - **Maven**: Dependency management and build tool.
 - **Spring Data JPA**: For database operations.
-- **H2 Database**: An in-memory database for development and testing.
 - **RESTful Web Services**: The application will expose REST APIs to interact with clients.
 
 ## Setup Instructions
@@ -37,6 +36,38 @@ This project is a practice implementation of Spring Boot, a powerful framework u
 - **Spring Boot DevTools**: For enhanced development experience.
 - **Spring Data JPA**: For interacting with the database.
 - **H2 Database**: Lightweight in-memory database for testing and development.
+
+---
+
+## Code Changes Summary
+
+### Key Features Implemented
+
+#### 1. Bean Scopes (PR #4)
+- **Singleton Scope**: Single instance of bean for entire application
+- **Prototype Scope**: New instance created for each request
+- Test coverage and validation included
+- Working implementation with application logs
+
+#### 2. Bean Lifecycle (PR #2)
+- PostConstruct implementation
+- PreDestroy implementation
+- Circular dependency resolution using setter injection
+- Component primary annotation usage
+
+#### 3. Core Features (PR #1)
+- REST API Interceptor
+- Property file configuration
+- Bean Exception handling
+- Greet API endpoint
+
+#### 4. Initial Setup
+- Project initialization with Maven
+- Spring Boot configuration
+- H2 in-memory database setup
+- Basic REST endpoints
+
+---
 
 ## Learning Resources
 - [Spring Boot Official Documentation](https://spring.io/projects/spring-boot)
