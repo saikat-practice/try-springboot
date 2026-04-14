@@ -1,5 +1,7 @@
 package com.springboot.practice.intialize.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -37,17 +39,19 @@ public class DisplayController {
 	}
 	
 	
-	
+	//added custom intercepter
 	@GetMapping("/greet")
     public String getWish() {
 		
 		return "Hello "+name+" ."+"We are in "+env+" environment";
 	}
 	
+	
+	//returned login name in api call
 	@GetMapping("/generic")
-    public String getHello() {
+    public String getHello(Principal principal) {
 		
-		return "Hello User";
+		return "Hello "+ principal.getName();
 	}
 	
 	
